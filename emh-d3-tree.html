@@ -66,39 +66,125 @@
           type: Object,
           notify: true, 
           value:  {
-            "name": "Top Level",
-            "value": 10,
-            "type": "black",
-            "level": "red",
-            "children": [
-                {
-                "name": "Level 2: A",
-                "value": 15,
-                "type": "grey",
-                "level": "red",
-                "children": [
-                    {
-                    "name": "Son of A",
-                    "value": 5,
-                    "type": "steelblue",
-                    "level": "orange"
-                    },
-                    {
-                    "name": "Daughter of A",
-                    "value": 8,
-                    "type": "steelblue",
-                    "level": "red"
-                    }
-                ]
-                },
-                {
-                "name": "Level 2: B",
-                "value": 10,
-                "type": "grey",
-                "level": "green"
-                }
-            ]
-          },
+          "elementType": "xs:schema",
+          "name": "/xsd/01-person.xsd",
+          "x_size": 7,
+          "y_size": 7,
+          "_draw": "<circle class=\"nodeSequence\" cx=\"0\" cy=\"0\" r=\"2\" stroke=\"black\" stroke-width=\"1\" style=\"fill: lemonchiffon;\"><\/circle>",
+            "displayType": "object",
+            "opacity": 0.5,
+            "parentSchema": false,
+            "plainName": "/xsd/01-person.xsd",
+            "namespaces": [
+            {
+            "prefix": "xs",
+            "uri": "http://www.w3.org/2001/XMLSchema"
+            },
+            {
+            "prefix": "xml",
+            "uri": "http://www.w3.org/XML/1998/namespace"
+            }
+            ],
+            "attributeFormDefault": "unqualified",
+            "elementFormDefault": "unqualified",
+            "children": [{
+            "elementType": "xs:element",
+            "x_size": 50,
+            "y_size": 57.0666666666667,
+            "_draw": "<rect x=\"0\" y=\"-15\" width=\"57.0666666666667\" height=\"30\" style=\"fill: lemonchiffon\" stroke=\"#a07508\" stroke-width=\"1.5px\"><\/rect><text x=\"5\" y=\"0\" font-family=\"sans-serif\" font-size=\"10px\" text-anchor=\"start\">Person<\/text><text x=\"5\" y=\"12\" font-family=\"sans-serif\" font-size=\"8px\" text-anchor=\"start\"><\/text>",
+              "displayType": "object",
+              "documentation": ["An individual human being."],
+              "name": "Person",
+              "abstract": "false",
+              "nillable": "false",
+              "children": [{
+              "elementType": "xs:sequence",
+              "x_size": 67,
+              "y_size": 67,
+              "_draw": "<polygon points=\"1,-15 11,-25 51,-25 61,-15  61,15 51,25  11,25 1,15\" fill=\"lightblue\" stroke=\"black\"><\/polygon><circle fill=\"black\" r=\"5\" cx=\"16\" cy=\"0\"/><circle fill=\"black\" r=\"5\" cx=\"31\" cy=\"0\"/><circle fill=\"black\" r=\"5\" cx=\"46\" cy=\"0\"/><line x1=\"1\" y1=\"0\" x2=\"60\" y2=\"0\" stroke=\"black\"/>",
+              "children": [
+              {
+              "elementType": "xs:element",
+              "x_size": 50,
+              "y_size": 114.2,
+              "_draw": "<rect x=\"0\" y=\"-15\" width=\"114.2\" height=\"30\" style=\"fill: lemonchiffon\" stroke=\"#a07508\" stroke-width=\"1.5px\"><\/rect><text x=\"5\" y=\"0\" font-family=\"sans-serif\" font-size=\"10px\" text-anchor=\"start\">PersonGivenName<\/text><text x=\"5\" y=\"12\" font-family=\"sans-serif\" font-size=\"8px\" text-anchor=\"start\"><\/text>",
+              "displayType": "object",
+              "documentation": ["The name given to a person at birth.  In western countries this is usually the first name.  "],
+              "name": "PersonGivenName",
+              "minOccurs": "0",
+              "maxOccurs": "1",
+              "nillable": "false"
+              },
+              {
+              "elementType": "xs:element",
+              "x_size": 50,
+              "y_size": 120.933333333333,
+              "_draw": "<rect x=\"0\" y=\"-15\" width=\"120.933333333333\" height=\"30\" style=\"fill: lemonchiffon\" stroke=\"#a07508\" stroke-width=\"1.5px\"><\/rect><text x=\"5\" y=\"0\" font-family=\"sans-serif\" font-size=\"10px\" text-anchor=\"start\">PersonFamilyName<\/text><text x=\"5\" y=\"12\" font-family=\"sans-serif\" font-size=\"8px\" text-anchor=\"start\"><\/text>",
+              "displayType": "object",
+              "name": "PersonFamilyName",
+              "minOccurs": "1",
+              "maxOccurs": "1",
+              "nillable": "false"
+              },
+              {
+              "elementType": "xs:element",
+              "x_size": 50,
+              "y_size": 119.333333333333,
+              "_draw": "<rect x=\"0\" y=\"-15\" width=\"119.333333333333\" height=\"30\" style=\"fill: lemonchiffon\" stroke=\"#a07508\" stroke-width=\"1.5px\"><\/rect><text x=\"5\" y=\"0\" font-family=\"sans-serif\" font-size=\"10px\" text-anchor=\"start\">PersonGenderCode<\/text><text x=\"5\" y=\"12\" font-family=\"sans-serif\" font-size=\"8px\" text-anchor=\"start\"><\/text>",
+              "displayType": "object",
+              "name": "PersonGenderCode",
+              "minOccurs": "0",
+              "maxOccurs": "1",
+              "nillable": "false"
+              },
+              {
+              "elementType": "xs:element",
+              "x_size": 50,
+              "y_size": 110.133333333333,
+              "_draw": "<rect x=\"0\" y=\"-15\" width=\"110.133333333333\" height=\"30\" style=\"fill: lemonchiffon\" stroke=\"#a07508\" stroke-width=\"1.5px\"><\/rect><text x=\"5\" y=\"0\" font-family=\"sans-serif\" font-size=\"10px\" text-anchor=\"start\">PersonBirthDate<\/text><text x=\"5\" y=\"12\" font-family=\"sans-serif\" font-size=\"8px\" text-anchor=\"start\"><\/text>",
+              "displayType": "object",
+              "name": "PersonBirthDate",
+              "minOccurs": "0",
+              "maxOccurs": "1",
+              "nillable": "false"
+              },
+              {
+              "elementType": "xs:element",
+              "x_size": 50,
+              "y_size": 158.733333333333,
+              "_draw": "<rect x=\"0\" y=\"-15\" width=\"158.733333333333\" height=\"30\" style=\"fill: lemonchiffon\" stroke=\"#a07508\" stroke-width=\"1.5px\"><\/rect><text x=\"5\" y=\"0\" font-family=\"sans-serif\" font-size=\"10px\" text-anchor=\"start\">PersonLikesSVGIndicator<\/text><text x=\"5\" y=\"12\" font-family=\"sans-serif\" font-size=\"8px\" text-anchor=\"start\"><\/text>",
+              "displayType": "object",
+              "name": "PersonLikesSVGIndicator",
+              "minOccurs": "0",
+              "maxOccurs": "1",
+              "nillable": "false"
+              },
+              {
+              "elementType": "xs:element",
+              "x_size": 50,
+              "y_size": 92.2666666666667,
+              "_draw": "<rect x=\"0\" y=\"-15\" width=\"92.2666666666667\" height=\"30\" style=\"fill: lemonchiffon\" stroke=\"#a07508\" stroke-width=\"1.5px\"><\/rect><text x=\"5\" y=\"0\" font-family=\"sans-serif\" font-size=\"10px\" text-anchor=\"start\">PhoneNumber<\/text><text x=\"5\" y=\"12\" font-family=\"sans-serif\" font-size=\"8px\" text-anchor=\"start\"><\/text>",
+              "displayType": "object",
+              "name": "PhoneNumber",
+              "maxOccurs": "unbounded",
+              "minOccurs": "0",
+              "nillable": "false"
+              },
+              {
+              "elementType": "xs:element",
+              "x_size": 50,
+              "y_size": 48.6666666666667,
+              "_draw": "<rect x=\"0\" y=\"-15\" width=\"48.6666666666667\" height=\"30\" style=\"fill: lemonchiffon\" stroke=\"#a07508\" stroke-width=\"1.5px\"><\/rect><text x=\"5\" y=\"0\" font-family=\"sans-serif\" font-size=\"10px\" text-anchor=\"start\">Email<\/text><text x=\"5\" y=\"12\" font-family=\"sans-serif\" font-size=\"8px\" text-anchor=\"start\"><\/text>",
+              "displayType": "object",
+              "maxOccurs": "unbounded",
+              "name": "Email",
+              "minOccurs": "1",
+              "nillable": "false"
+              }
+              ]
+              }]
+              }]
+              },
           observer: '_treeChanged'
         },
         selected_node: {
@@ -119,7 +205,7 @@
         var aa = this.$.polymerTree.getBoundingClientRect();
         var svg_height = aa.height - 20 - 30;
         var svg_width = aa.width - 90 - 90;
-        this.treemap = d3.tree().size([svg_height, svg_width]);
+        this.treemap = d3.tree().size([svg_height, svg_width]).separation(function(a, b) {return 1;});
         if (this.treemap) {
           this.redraw();
         }
@@ -145,19 +231,20 @@
         g.attr("transform", d3.event.transform);
         }
         this.nodes = this.treemap(this.nodes);
-        var g = d3.select(this.$.polymerTree).append("g")
+        var g = d3.select(this.$.polymerTree)        .call(d3.zoom().on("zoom", function () {
+        g.attr("transform", d3.event.transform)
+        }))
+        .append("g")
                 .attr("transform",
                 "translate(" + 90 + "," + 20 + ")")
-                .call(d3.zoom()
-                .scaleExtent([1 / 2, 4])
-                .on("zoom", this.zoomed));
+;
                 
         // adds the links between the nodes
         var link = g.selectAll(".link")
                     .data( this.nodes.descendants().slice(1))
                     .enter().append("path")
                     .attr("class", "link")
-                    .style("stroke", function(d) { return d.data.level; })
+                    .style("stroke", "#666")
                     .style("fill", "none")
                     .attr("d", function(d) {
                         return "M" + d.y + "," + d.x
@@ -178,15 +265,10 @@
                     });
         
         // adds symbols as nodes
-        node.append("path")
-            .style("stroke", function(d) { return d.data.type; })
-            .style("fill", function(d) { return d.data.level; })
-            .attr("d", d3.symbol()
-            .size(function(d) { return d.data.value * 30; } )
-            .type(function(d) { 
-              if (d.data.value >= 9) { return d3.symbolCross; } 
-              else if (d.data.value <= 9) { return d3.symbolDiamond;}
-            }));
+        node.append("circle")
+            .style("stroke", "#666")
+            .style("fill", "yellow")
+            .attr("r", 5);
         
         // adds the text to the node
         node.append("text")
