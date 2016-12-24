@@ -50,12 +50,49 @@
     </style>
     <div class="general">
       <div class="relative" style="height: 100%;">
-        <svg height="100%" width="100%" id="polymerTree"></svg>
+        <svg height="100%" width="100%" id="polymerTree">
+          <defs>
+            <filter id="drop-shadow" x="0" y="0" width="200%" height="200%">
+              <feOffset result="offOut" in="SourceGraphic" dx="10" dy="10" />
+              <feGaussianBlur result="blurOut" in="offOut" stdDeviation="10" />
+              <feBlend in="SourceGraphic" in2="blurOut" mode="normal" />
+            </filter>
+          </defs>
+        </svg>
       </div>
     </div>
   </template>
 
   <script>
+    var d3Polymer;
+    
+    function hasClass(el, className) {
+      if (el.classList)
+        return el.classList.contains(className)
+      else
+        return !!el.className.match(new RegExp('(\\s|^)' + className + '(\\s|$)'))
+    }
+    
+    function addClass(el, className) {
+      if (el.classList)
+        el.classList.add(className)
+      else if (!hasClass(el, className)) 
+        el.className += " " + className
+    }
+    
+    function removeClass(el, className) {
+      if (el.classList)
+        el.classList.remove(className)
+      else if (hasClass(el, className)) {
+        var reg = new RegExp('(\\s|^)' + className + '(\\s|$)')
+        el.className=el.className.replace(reg, ' ')
+      }
+    }
+    
+    
+    
+    
+    
     Polymer({
 
       is: 'emh-d3-tree',
@@ -187,7 +224,7 @@
               },
           observer: '_treeChanged'
         },
-        selected_node: {
+        selectedNode: {
           type: Object,
           notify: true
         }
@@ -202,6 +239,7 @@
       
       attached: function() {
         console.log(this.localName + '#' + this.id + ' was attached');
+        d3Polymer = this;
         var aa = this.$.polymerTree.getBoundingClientRect();
         var svg_height = aa.height - 20 - 30;
         var svg_width = aa.width - 90 - 90;
@@ -248,7 +286,7 @@
         var link = g.selectAll(".link")
                     .data( this.nodes.descendants().slice(1))
                     .enter().append("path")
-                    .attr("class", "link")
+                    .attr("class", "link emh-d3-tree")
                     .style("stroke", "#666")
                     .style("fill", "none")
                     .attr("d", function(d) {
@@ -262,11 +300,29 @@
                     .data(this.nodes.descendants())
                     .enter().append("g")
                     .attr("class", function(d) { 
-                      return "node" + (d.children ? " node--internal" : " node--leaf"); 
+                      return "node emh-d3-tree" + (d.children ? " node--internal" : " node--leaf"); 
                     })
                     .attr("transform", function(d) { 
                       return "translate(" + d.y + "," + d.x + ")"; 
-                    });
+                    })
+                    .on("click", 
+                      function(d) { 
+                        var previousOnes = document.getElementsByClassName("node_selected");
+                        while (previousOnes.length) {
+                          previousOnes[0].style.filter = null;
+                          previousOnes[0].classList.remove("node_selected");
+                        }
+  
+                        if (d == d3Polymer.selectedNode) {
+                          d3Polymer.selectedNode = null;
+                        } else {
+                          d3Polymer.selectedNode = d; 
+                          this.style.filter = "url(#drop-shadow)";
+                          addClass(this, "node_selected");
+                        }
+                      }
+                    )
+                    ;
         
         // adds symbols as nodes
         node.html( function(d) { 
