@@ -205,17 +205,17 @@
         var aa = this.$.polymerTree.getBoundingClientRect();
         var svg_height = aa.height - 20 - 30;
         var svg_width = aa.width - 90 - 90;
-        this.treemap = d3.tree().size([svg_height, svg_width]).separation(function(a, b) {return 1;});
+        this.treemap = d3.tree()
+                         .nodeSize([50, 120])
+                         .separation(function(a, b) {return 1;});
+                         
         if (this.treemap) {
-//          this.treemap.nodeSize(function(d) {
-//            return [d.data.x_size, d.data.y_size];
-//          });
           this.redraw();
         }
       },
       
       detached: function() {
-      console.log(this.localName + '#' + this.id + ' was detached');
+        console.log(this.localName + '#' + this.id + ' was detached');
       },
       
       
@@ -241,7 +241,7 @@
         }))
         .append("g")
                 .attr("transform",
-                "translate(" + 90 + "," + 20 + ")")
+                "translate(" + 50 + "," + this.$.polymerTree.getBoundingClientRect().height / 2 + ")")
 ;
                 
         // adds the links between the nodes
@@ -252,10 +252,9 @@
                     .style("stroke", "#666")
                     .style("fill", "none")
                     .attr("d", function(d) {
-                        return "M" + d.y + "," + d.x
-                        + "C" + (d.y + d.parent.y) / 2 + "," + d.x
-                        + " " + (d.y + d.parent.y) / 2 + "," + d.parent.x
-                        + " " + d.parent.y + "," + d.parent.x;
+                      return 'M' + (d.parent.y + 0) + ',' + d.parent.x +
+                      'H' + (d.y - 30) + 'V' + d.x +
+                      ('h' + 30);
                     });
         
         // adds each node as a group
