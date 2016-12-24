@@ -52,10 +52,13 @@
       <div class="relative" style="height: 100%;">
         <svg height="100%" width="100%" id="polymerTree">
           <defs>
-            <filter id="drop-shadow" x="0" y="0" width="200%" height="200%">
-              <feOffset result="offOut" in="SourceGraphic" dx="10" dy="10" />
-              <feGaussianBlur result="blurOut" in="offOut" stdDeviation="10" />
-              <feBlend in="SourceGraphic" in2="blurOut" mode="normal" />
+            <filter id="drop-shadow" height="130%">
+              <feGaussianBlur in="SourceAlpha" stdDeviation="5" result="blur"/>
+              <feOffset in="blur" dx="5" dy="5" result="offsetBlur"/>
+              <feMerge>
+                <feMergeNode in="offsetBlur"/>
+                <feMergeNode in="SourceGraphic"/>
+              </feMerge>
             </filter>
           </defs>
         </svg>
