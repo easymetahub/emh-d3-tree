@@ -68,6 +68,7 @@
 
   <script>
     var d3Polymer;
+    var g;
     
     function hasClass(el, className) {
       if (el.classList)
@@ -279,14 +280,14 @@
         scaleExtent([.5, 10])
         .on("zoom", function () {
         g.attr("transform", d3.event.transform)
-        }))
+        })).on("dblclick.zoom", null)
         .append("g")
                 .attr("transform",
                 "translate(" + 50 + "," + this.$.polymerTree.getBoundingClientRect().height / 2 + ")")
 ;
                 
         // adds the links between the nodes
-        var link = g.selectAll(".link")
+        var linkEnter = g.selectAll(".link")
                     .data( this.nodes.descendants().slice(1))
                     .enter().append("path")
                     .attr("class", "link emh-d3-tree")
@@ -298,8 +299,11 @@
                       ('h' + 30);
                     });
         
+        linkExit = g.selectAll(".link")
+        .data(this.nodes.descendants().slice(1)).exit().remove();
+        
         // adds each node as a group
-        var node = g.selectAll(".node")
+        var nodeEnter = g.selectAll(".node")
                     .data(this.nodes.descendants())
                     .enter().append("g")
                     .attr("class", function(d) { 
@@ -325,23 +329,31 @@
                         }
                       }
                     )
+                    .on("dblclick", 
+                        function(d) {
+                          if (d.children) {
+                            d._children = d.children;
+                            d.children = null;
+                            d3Polymer.redraw();
+                          } else if (d._children) {
+                            d.children = d._children;
+                            d._children = null;
+                            d3Polymer.redraw();
+                          }
+                        }
+                    )
                     ;
         
         // adds symbols as nodes
-        node.html( function(d) { 
+        nodeEnter.html( function(d) { 
             return d.data._draw ? d.data._draw : ''; 
         });
         
-        // adds the text to the node
-        /*
-        node.append("text")
-          .attr("dy", ".35em")
-          .attr("x", function(d) { return d.children ? 
-          (d.data.value + 4) * -1 : d.data.value + 4 })
-          .style("text-anchor", function(d) { 
-          return d.children ? "end" : "start"; })
-          .text(function(d) { return d.data.name; });
-          */
+        nodeExit = g.selectAll(".node")
+                    .data(this.nodes.descendants())
+                    .exit().transition()
+                    .attr("r", 0)
+                    .remove();
       }
       
     });
