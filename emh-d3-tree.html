@@ -299,8 +299,8 @@
       
       diagonal: function(s, d) {
         return 'M' + s.y + ',' + s.x +
-        'H' + (d.y - 30) + 'V' + d.x +
-        ('h' + 30);
+        'H' + d.y + 'V' + d.x +
+        'h1';
       },
       centerNode: function(source) {
       /*
@@ -409,7 +409,23 @@
                           .remove();
         
         // On exit reduce the node circles size to 0
-        //nodeExit.html('');
+        nodeExit.select("circle")
+        .attr("r", 0);
+        
+        nodeExit.select("rect")
+        .attr("width", 0).attr("height", 0);
+        
+        nodeExit.select("polygon")
+        .style("fill-opacity", 0).style("stroke-opacity", 0);
+        
+        nodeExit.select("path")
+        .style("fill-opacity", 0).style("stroke-opacity", 0);
+        
+        nodeExit.select("line")
+        .style("fill-opacity", 0).style("stroke-opacity", 0);
+        
+        nodeExit.select("text")
+        .style("fill-opacity", 0);
         
         // ****************** links section ***************************
         
@@ -446,6 +462,8 @@
         return d3Polymer.diagonal(o, o)
         })
         .remove();
+        
+        linkExit.style("fill-opacity", 0).style("stroke-opacity", 0);
         
         // Store the old positions for transition.
         d3Polymer.nodes.forEach(function(d){
