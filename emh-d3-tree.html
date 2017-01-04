@@ -94,6 +94,17 @@
       }
     }
     
+    // Collapse the node and all it's children
+    function collapse(d) {
+      if(d.children) {
+        d._children = d.children
+        for (var i = 0; i < d._children.length; i++) {
+          var child = d._children[i];
+          collapse(child);
+        }
+        d.children = null
+      }
+    }    
     
     
     
@@ -258,6 +269,14 @@
         this.root.x0 = svg_height / 2;
         this.root.y0 = 0;
         
+        if (this.root.children) {
+          var theChildren = this.root.children;
+          for (var i = 0; i < theChildren.length; i++) {
+            var child = theChildren[i];
+            collapse(child);
+          }
+        }
+        
         if (this.treemap) {
           this.update(root);
           this.centerNode(root);
@@ -291,6 +310,14 @@
               .on("dblclick.zoom", null)
               .append("g");
         
+        if (this.root.children) {
+          var theChildren = this.root.children;
+          for (var i = 0; i < theChildren.length; i++) {
+            var child = theChildren[i];
+            collapse(child);
+          }
+        }
+        
         if (this.treemap) {
           this.update(root);
           this.centerNode(root);
@@ -303,21 +330,30 @@
         'h1';
       },
       centerNode: function(source) {
-      /*
         var aa = d3Polymer.$.polymerTree.getBoundingClientRect();
         var svg_height = aa.height - 20 - 30;
         var svg_width = aa.width - 90 - 90;
-        scale = zoomListener.scale();
-        x = -source.y0;
-        y = -source.x0;
-        x = x * scale + svg_width / 2;
-        y = y * scale + svg_height / 2;
-        d3.select('g').transition()
-        .duration(duration)
-        .attr("transform", "translate(" + x + "," + y + ")scale(" + scale + ")");
-        zoomListener.scale(scale);
-        zoomListener.translate([x, y]);
+        
+        t = d3.zoomTransform(d3Polymer.$.polymerTree);
+        
+        /*
+        To keep the node to be centered at the same x coordinate use
+        x = t.x;
+        
+        To position the node at a certain x coordinate, use
+        x =  source.y0;
+        x = -x *t.k + 50;
+        
         */
+        x = t.x;
+        y = source.x0;
+        
+        y = -y *t.k + svg_height / 2;
+        
+        g.transition()
+        .duration(750)
+        .attr("transform", "translate(" + x + "," + y + ")scale(" + t.k + ")")
+        .on("end", function(){ g.call(zoomListener.transform, d3.zoomIdentity.translate(x,y).scale(t.k))});
       },
       
       update: function(source) {
