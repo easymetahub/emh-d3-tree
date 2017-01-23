@@ -1,5 +1,17 @@
 {
   "name": "emh-d3-tree",
+  "version": "0.9.0",
+  "description": "D3.js tree",
+  "authors": [
+    "Easy Meta Hub",
+    "Loren Cahlander"
+  ],
+  "keywords": [
+    "web-components",
+    "web-component",
+    "polymer",
+    "d3"
+  ],
   "main": "emh-d3-tree.html",
   "dependencies": {
     "polymer": "Polymer/polymer#^1.4.0",
