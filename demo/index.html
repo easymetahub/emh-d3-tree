@@ -23,7 +23,126 @@
       <h3>Basic emh-d3-tree Demo</h3>
       <demo-snippet>
         <template>
-          <emh-d3-tree id="demoEMHD3Tree"></emh-d3-tree>
+          <emh-d3-tree id="demoEMHD3Tree" tree='{
+            "elementType": "xs:schema",
+            "name": "/xsd/01-person.xsd",
+            "x_size": 7,
+            "y_size": 7,
+            "_draw": "<circle class=\"nodeSequence\" cx=\"0\" cy=\"0\" r=\"2\" stroke=\"black\" stroke-width=\"1\" style=\"fill: lemonchiffon;\"><\/circle>",
+              "displayType": "object",
+              "opacity": 0.5,
+              "parentSchema": false,
+              "plainName": "/xsd/01-person.xsd",
+              "namespaces": [
+              {
+              "prefix": "xs",
+              "uri": "http://www.w3.org/2001/XMLSchema"
+              },
+              {
+              "prefix": "xml",
+              "uri": "http://www.w3.org/XML/1998/namespace"
+              }
+              ],
+              "attributeFormDefault": "unqualified",
+              "elementFormDefault": "unqualified",
+              "children": [{
+              "elementType": "xs:element",
+              "x_size": 50,
+              "y_size": 57.0666666666667,
+              "_draw": "<rect x=\"0\" y=\"-15\" width=\"57.0666666666667\" height=\"30\" style=\"fill: lemonchiffon\" stroke=\"#a07508\" stroke-width=\"1.5px\"><\/rect><text x=\"5\" y=\"0\" font-family=\"sans-serif\" font-size=\"10px\" text-anchor=\"start\">Person<\/text><text x=\"5\" y=\"12\" font-family=\"sans-serif\" font-size=\"8px\" text-anchor=\"start\"><\/text>",
+              "displayType": "object",
+              "documentation": ["An individual human being."],
+              "name": "Person",
+              "abstract": "false",
+              "nillable": "false",
+              "children": [{
+              "elementType": "xs:sequence",
+              "x_size": 67,
+              "y_size": 67,
+              "_draw": "<polygon points=\"1,-15 11,-25 51,-25 61,-15  61,15 51,25  11,25 1,15\" fill=\"lightblue\" stroke=\"black\"><\/polygon><circle fill=\"black\" r=\"5\" cx=\"16\" cy=\"0\"/><circle fill=\"black\" r=\"5\" cx=\"31\" cy=\"0\"/><circle fill=\"black\" r=\"5\" cx=\"46\" cy=\"0\"/><line x1=\"1\" y1=\"0\" x2=\"60\" y2=\"0\" stroke=\"black\"/>",
+              "children": [
+              {
+              "elementType": "xs:element",
+              "x_size": 50,
+              "y_size": 114.2,
+              "_draw": "<rect x=\"0\" y=\"-15\" width=\"114.2\" height=\"30\" style=\"fill: lemonchiffon\" stroke=\"#a07508\" stroke-width=\"1.5px\"><\/rect><text x=\"5\" y=\"0\" font-family=\"sans-serif\" font-size=\"10px\" text-anchor=\"start\">PersonGivenName<\/text><text x=\"5\" y=\"12\" font-family=\"sans-serif\" font-size=\"8px\" text-anchor=\"start\"><\/text>",
+              "displayType": "object",
+              "documentation": ["The name given to a person at birth.  In western countries this is usually the first name.  "],
+              "name": "PersonGivenName",
+              "minOccurs": "0",
+              "maxOccurs": "1",
+              "nillable": "false"
+              },
+              {
+              "elementType": "xs:element",
+              "x_size": 50,
+              "y_size": 120.933333333333,
+              "_draw": "<rect x=\"0\" y=\"-15\" width=\"120.933333333333\" height=\"30\" style=\"fill: lemonchiffon\" stroke=\"#a07508\" stroke-width=\"1.5px\"><\/rect><text x=\"5\" y=\"0\" font-family=\"sans-serif\" font-size=\"10px\" text-anchor=\"start\">PersonFamilyName<\/text><text x=\"5\" y=\"12\" font-family=\"sans-serif\" font-size=\"8px\" text-anchor=\"start\"><\/text>",
+              "displayType": "object",
+              "name": "PersonFamilyName",
+              "minOccurs": "1",
+              "maxOccurs": "1",
+              "nillable": "false"
+              },
+              {
+              "elementType": "xs:element",
+              "x_size": 50,
+              "y_size": 119.333333333333,
+              "_draw": "<rect x=\"0\" y=\"-15\" width=\"119.333333333333\" height=\"30\" style=\"fill: lemonchiffon\" stroke=\"#a07508\" stroke-width=\"1.5px\"><\/rect><text x=\"5\" y=\"0\" font-family=\"sans-serif\" font-size=\"10px\" text-anchor=\"start\">PersonGenderCode<\/text><text x=\"5\" y=\"12\" font-family=\"sans-serif\" font-size=\"8px\" text-anchor=\"start\"><\/text>",
+              "displayType": "object",
+              "name": "PersonGenderCode",
+              "minOccurs": "0",
+              "maxOccurs": "1",
+              "nillable": "false"
+              },
+              {
+              "elementType": "xs:element",
+              "x_size": 50,
+              "y_size": 110.133333333333,
+              "_draw": "<rect x=\"0\" y=\"-15\" width=\"110.133333333333\" height=\"30\" style=\"fill: lemonchiffon\" stroke=\"#a07508\" stroke-width=\"1.5px\"><\/rect><text x=\"5\" y=\"0\" font-family=\"sans-serif\" font-size=\"10px\" text-anchor=\"start\">PersonBirthDate<\/text><text x=\"5\" y=\"12\" font-family=\"sans-serif\" font-size=\"8px\" text-anchor=\"start\"><\/text>",
+              "displayType": "object",
+              "name": "PersonBirthDate",
+              "minOccurs": "0",
+              "maxOccurs": "1",
+              "nillable": "false"
+              },
+              {
+              "elementType": "xs:element",
+              "x_size": 50,
+              "y_size": 158.733333333333,
+              "_draw": "<rect x=\"0\" y=\"-15\" width=\"158.733333333333\" height=\"30\" style=\"fill: lemonchiffon\" stroke=\"#a07508\" stroke-width=\"1.5px\"><\/rect><text x=\"5\" y=\"0\" font-family=\"sans-serif\" font-size=\"10px\" text-anchor=\"start\">PersonLikesSVGIndicator<\/text><text x=\"5\" y=\"12\" font-family=\"sans-serif\" font-size=\"8px\" text-anchor=\"start\"><\/text>",
+              "displayType": "object",
+              "name": "PersonLikesSVGIndicator",
+              "minOccurs": "0",
+              "maxOccurs": "1",
+              "nillable": "false"
+              },
+              {
+              "elementType": "xs:element",
+              "x_size": 50,
+              "y_size": 92.2666666666667,
+              "_draw": "<rect x=\"0\" y=\"-15\" width=\"92.2666666666667\" height=\"30\" style=\"fill: lemonchiffon\" stroke=\"#a07508\" stroke-width=\"1.5px\"><\/rect><text x=\"5\" y=\"0\" font-family=\"sans-serif\" font-size=\"10px\" text-anchor=\"start\">PhoneNumber<\/text><text x=\"5\" y=\"12\" font-family=\"sans-serif\" font-size=\"8px\" text-anchor=\"start\"><\/text>",
+              "displayType": "object",
+              "name": "PhoneNumber",
+              "maxOccurs": "unbounded",
+              "minOccurs": "0",
+              "nillable": "false"
+              },
+              {
+              "elementType": "xs:element",
+              "x_size": 50,
+              "y_size": 48.6666666666667,
+              "_draw": "<rect x=\"0\" y=\"-15\" width=\"48.6666666666667\" height=\"30\" style=\"fill: lemonchiffon\" stroke=\"#a07508\" stroke-width=\"1.5px\"><\/rect><text x=\"5\" y=\"0\" font-family=\"sans-serif\" font-size=\"10px\" text-anchor=\"start\">Email<\/text><text x=\"5\" y=\"12\" font-family=\"sans-serif\" font-size=\"8px\" text-anchor=\"start\"><\/text>",
+              "displayType": "object",
+              "maxOccurs": "unbounded",
+              "name": "Email",
+              "minOccurs": "1",
+              "nillable": "false"
+              }
+              ]
+              }]
+              }]
+              }'></emh-d3-tree>
         </template>
       </demo-snippet>
     </div>
